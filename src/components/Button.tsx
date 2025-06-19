@@ -1,12 +1,12 @@
-import type { FC } from "react";
+import type { ReactNode } from "react";
 
-type InputProps = {
+type ButtonProps = {
   handleClick: () => void;
-  buttonText: string;
+  children: ReactNode;
 };
 
-const Input: FC<InputProps> = ({ handleClick, buttonText }) => {
-  return <button onClick={handleClick}>{buttonText}</button>;
+const Button = ({ handleClick, children }: ButtonProps) => {
+  return <button onClick={handleClick}>{children}</button>;
 };
 
-export default Input;
+export default Button;

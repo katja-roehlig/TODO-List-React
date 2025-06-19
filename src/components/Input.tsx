@@ -1,41 +1,70 @@
-import Button from "./Button";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { FC } from "react";
 
-function Input() {
-  //Type declaration
-  type TodoItem = { name: string; isDone: boolean };
+//Type declaration
+type TodoItem = { id: string; name: string; prio: boolean; isDone: boolean };
+type InputProps = {
+  setTodoList: React.Dispatch<React.SetStateAction<TodoItem[]>>;
+  todoList: TodoItem[];
+};
 
+const Input: FC<InputProps> = ({ setTodoList, todoList }) => {
   //Variables
-  const buttonText = "Todo einfügen";
+  const uuid = crypto.randomUUID();
 
+  const cursorRef = useRef<HTMLInputElement>(null);
   //States
   const [todo, setTodo] = useState("");
-  const [todoList, setTodoList] = useState<TodoItem[]>([]);
+  const [prio, setPrio] = useState(false);
+
+  //localStorage
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(todoList));
+  }, [todoList]);
 
   //Functions
-  const handleTodo = () => {
-    const newTodo: TodoItem = { name: todo, isDone: false };
-    setTodoList([...todoList, newTodo]);
-    setTodo("");
-
-    console.log("newTodo", newTodo);
-    console.log("liste", todoList);
+  const handleTodo = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (todo.length > 3) {
+      const newTodo: TodoItem = {
+        id: uuid,
+        name: todo,
+        prio: prio,
+        isDone: false,
+      };
+      setTodoList((prev) => {
+        const sortedList = [...prev, newTodo];
+        sortedList.sort((a, b) => {
+          return Number(b.prio) - Number(a.prio); // true correspond to 1, false correspond to 0 - you have to convert them into Numbers
+        });
+        return sortedList;
+      });
+      setTodo("");
+      setPrio(false);
+      cursorRef.current?.focus();
+    }
   };
 
   return (
-    <>
+    <form onSubmit={handleTodo}>
       <label htmlFor="todos">Todo einfügen </label>
       <input
         name="todos"
         id="todos"
+        ref={cursorRef}
+        autoFocus
         required
         placeholder="Wäsche waschen"
         value={todo}
         onChange={(event) => setTodo(event.target.value)}
       ></input>
-      <Button handleClick={handleTodo} buttonText={buttonText} />
-    </>
+      <label>
+        <input type="checkbox" checked={prio} onChange={() => setPrio(!prio)} />
+        urgent
+      </label>
+      <button type="submit">Todo einfügen</button>
+    </form>
   );
-}
+};
 
 export default Input;
