@@ -1,14 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { /* useEffect */ useRef, useState } from "react";
 import type { FC } from "react";
 
 //Type declaration
 type TodoItem = { id: string; name: string; prio: boolean; isDone: boolean };
 type InputProps = {
   setTodoList: React.Dispatch<React.SetStateAction<TodoItem[]>>;
-  todoList: TodoItem[];
+  /*  todoList: TodoItem[];
+  listName: string; */
 };
 
-const Input: FC<InputProps> = ({ setTodoList, todoList }) => {
+const Input: FC<InputProps> = ({ setTodoList /*  todoList, listName */ }) => {
   //Variables
   const uuid = crypto.randomUUID();
 
@@ -16,11 +17,6 @@ const Input: FC<InputProps> = ({ setTodoList, todoList }) => {
   //States
   const [todo, setTodo] = useState("");
   const [prio, setPrio] = useState(false);
-
-  //localStorage
-  useEffect(() => {
-    localStorage.setItem("list", JSON.stringify(todoList));
-  }, [todoList]);
 
   //Functions
   const handleTodo = (event: React.FormEvent) => {
@@ -47,14 +43,14 @@ const Input: FC<InputProps> = ({ setTodoList, todoList }) => {
 
   return (
     <form onSubmit={handleTodo}>
-      <label htmlFor="todos">Todo einfügen </label>
+      <label htmlFor="todos">Add Todo </label>
       <input
         name="todos"
         id="todos"
         ref={cursorRef}
         autoFocus
         required
-        placeholder="Wäsche waschen"
+        placeholder="wash your clothes"
         value={todo}
         onChange={(event) => setTodo(event.target.value)}
       ></input>
@@ -62,7 +58,7 @@ const Input: FC<InputProps> = ({ setTodoList, todoList }) => {
         <input type="checkbox" checked={prio} onChange={() => setPrio(!prio)} />
         urgent
       </label>
-      <button type="submit">Todo einfügen</button>
+      <button type="submit">Add Todo</button>
     </form>
   );
 };
