@@ -30,6 +30,11 @@ const List: FC<ListProps> = ({ todoList, setTodoList }) => {
     setTodoList((prev) => prev.filter((item) => item.isDone === false));
   };
 
+  const handleReset = () => {
+    setTodoList((prev) =>
+      prev.map((item) => (item.isDone ? { ...item, isDone: false } : item))
+    );
+  };
   return (
     <>
       <ul>
@@ -52,9 +57,11 @@ const List: FC<ListProps> = ({ todoList, setTodoList }) => {
               />
             </label>
             {item.name}
+            {/*   <Button handleClick={() => setEditTodo(item)}>Edit</Button> */}
           </li>
         ))}
       </ul>
+      <Button handleClick={handleReset}>Reset</Button>
       <Button handleClick={handleDelete}>Delete</Button>
     </>
   );
