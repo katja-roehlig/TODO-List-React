@@ -15,6 +15,7 @@ function App() {
   });
 
   const [isLoaded, setIsLoaded] = useState(false);
+  const [editTodo, setEditTodo] = useState<TodoItem | null>(null);
 
   useEffect(() => {
     if (!listName) return;
@@ -42,9 +43,16 @@ function App() {
       <Input
         /*  todoList={todoList} */
         setTodoList={setTodoList}
+        editTodo={editTodo}
+        setEditTodo={setEditTodo}
         /*   listName={listName} */
       />
-      <List todoList={todoList} setTodoList={setTodoList} />
+      <List
+        todoList={todoList}
+        setTodoList={setTodoList}
+        editTodo={editTodo}
+        setEditTodo={setEditTodo}
+      />
     </>
   );
 }

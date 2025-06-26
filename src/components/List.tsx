@@ -5,9 +5,16 @@ type TodoItem = { id: string; name: string; prio: boolean; isDone: boolean };
 type ListProps = {
   todoList: TodoItem[];
   setTodoList: React.Dispatch<React.SetStateAction<TodoItem[]>>;
+  editTodo: TodoItem | null;
+  setEditTodo: (todo: TodoItem | null) => void;
 };
 
-const List: FC<ListProps> = ({ todoList, setTodoList }) => {
+const List: FC<ListProps> = ({
+  todoList,
+  setTodoList,
+  setEditTodo,
+  editTodo,
+}) => {
   const handleDoneChange = (id: string) => {
     setTodoList((prev) =>
       prev
@@ -57,10 +64,17 @@ const List: FC<ListProps> = ({ todoList, setTodoList }) => {
               />
             </label>
             {item.name}
-            {/*   <Button handleClick={() => setEditTodo(item)}>Edit</Button> */}
+            <Button
+              handleClick={() => {
+                setEditTodo(item);
+              }}
+            >
+              Edit
+            </Button>
           </li>
         ))}
       </ul>
+      {editTodo?.name}
       <Button handleClick={handleReset}>Reset</Button>
       <Button handleClick={handleDelete}>Delete</Button>
     </>
