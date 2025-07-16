@@ -23,7 +23,7 @@ html {
 
 body {
   font-family: "SourceSansProReg";
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: var(--font-color-dark);
   background-image: linear-gradient(
     var(--bg-color-dark) 60%,
@@ -68,10 +68,11 @@ h2 {
 
 input {
   appearance: none;
-  height: 46px;
+  height: 56px;
   padding: 0.5rem 1.5rem;
   border-radius: 15px;
   border: 2px solid transparent;
+  font-size: 1.8rem;
   min-width: 70%;
   width: 80%;
   filter: drop-shadow(0px 2px 2px #22277bb3);
@@ -84,7 +85,7 @@ input {
 }
 
 input:focus {
-  outline: 3px solid var(--accent-color-light);
+  outline: 1px solid var(--accent-color-light);
 }
 li {
   list-style: none;

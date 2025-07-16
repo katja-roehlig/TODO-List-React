@@ -79,7 +79,7 @@ const List: FC<ListProps> = ({ todoList, setTodoList, setEditTodo }) => {
               }}
               className={styles.editButton}
             >
-              <EditIcon color="var(--font-color-light)" />
+              <EditIcon color="var(--font-color-light)" size={35} />
             </Button>
           </li>
         ))}
