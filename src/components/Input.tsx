@@ -1,6 +1,7 @@
 import { /* useEffect */ useEffect, useRef, useState } from "react";
 import type { FC } from "react";
 import Button from "./Button";
+import PrioIcon from "../components-svg/PrioIcon";
 
 //Type declaration
 type TodoItem = { id: string; name: string; prio: boolean; isDone: boolean };
@@ -103,10 +104,11 @@ const Input: FC<InputProps> = ({
             type="checkbox"
             checked={prio}
             onChange={() => setPrio(!prio)}
+            style={{ border: "2px solid indigo" }}
           />
-          urgent
+          <PrioIcon />
         </label>
-        <button type="submit">{editTodo ? "Change" : "Add Todo"}</button>
+        <Button variant="primary">{editTodo ? "Change" : "+"}</Button>
       </form>
       {editTodo && (
         <Button

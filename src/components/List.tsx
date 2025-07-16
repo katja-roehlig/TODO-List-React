@@ -1,5 +1,9 @@
 import type { FC } from "react";
 import Button from "./Button";
+import EditIcon from "../components-svg/EditIcon";
+import ResetIcon from "../components-svg/ResetIcon";
+import DeleteIcon from "../components-svg/DeleteIcon";
+import styles from "./List.module.css";
 
 type TodoItem = { id: string; name: string; prio: boolean; isDone: boolean };
 type ListProps = {
@@ -44,39 +48,50 @@ const List: FC<ListProps> = ({
   };
   return (
     <>
-      <ul>
+      <ul className={styles.list}>
         {todoList.map((item) => (
           <li
             key={item.id}
-            style={
+            /* style={
               item.prio
                 ? { color: "red" }
                 : item.isDone
                 ? { color: "lightgrey", textDecoration: "line-through" }
                 : { color: "initial" }
-            }
+            } */
+            className={` ${styles.listItem} ${
+              item.prio ? styles.prio : item.isDone ? styles.done : ""
+            }  `}
           >
             <label>
               <input
                 type="checkbox"
                 checked={item.isDone}
                 onChange={() => handleDoneChange(item.id)}
+                className={styles.checkbox}
               />
             </label>
             {item.name}
             <Button
+              variant="secondary"
               handleClick={() => {
                 setEditTodo(item);
               }}
+              className={styles.editButton}
             >
-              Edit
+              <EditIcon color="var(--font-color-light)" />
             </Button>
           </li>
         ))}
       </ul>
-      {editTodo?.name}
-      <Button handleClick={handleReset}>Reset</Button>
-      <Button handleClick={handleDelete}>Delete</Button>
+      <div className={styles.buttonContainer}>
+        <Button handleClick={handleReset}>
+          <ResetIcon />
+        </Button>
+        <Button variant="tertiary" handleClick={handleDelete}>
+          <DeleteIcon />
+        </Button>
+      </div>
     </>
   );
 };

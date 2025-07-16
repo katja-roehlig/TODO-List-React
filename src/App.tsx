@@ -38,20 +38,23 @@ function App() {
 
   return (
     <>
-      <h1>Get your sh*t done</h1>
+      <h1>
+        Get your sh<span className="star">*</span>t done
+      </h1>
       <TodoListName listName={listName} setListName={setListName} date={date} />
+
+      <List
+        todoList={todoList}
+        setTodoList={setTodoList}
+        editTodo={editTodo}
+        setEditTodo={setEditTodo}
+      />
       <Input
         /*  todoList={todoList} */
         setTodoList={setTodoList}
         editTodo={editTodo}
         setEditTodo={setEditTodo}
         /*   listName={listName} */
-      />
-      <List
-        todoList={todoList}
-        setTodoList={setTodoList}
-        editTodo={editTodo}
-        setEditTodo={setEditTodo}
       />
     </>
   );

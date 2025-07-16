@@ -1,0 +1,15 @@
+.subtitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 1.5rem;
+  border: 2px solid coral;
+}
+
+.editSubtitle {
+  margin-left: auto;
+}
+
+.h2 {
+  text-align: center;
+}

@@ -1,0 +1,32 @@
+.button {
+  border: 2px solid transparent;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--font-color-light);
+}
+.button:hover {
+  border-color: #646cff;
+}
+.button:focus,
+.button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.primary {
+  background-color: var(--primary-color);
+}
+.secondary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color-transparent);
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  padding: 0.5rem;
+}
+.tertiary {
+  background-color: var(--accent-color);
+}

@@ -1,5 +1,7 @@
 import { useState, type FC } from "react";
 import Button from "./Button";
+import EditIcon from "../components-svg/EditIcon";
+import styles from "./TodoListName.module.css";
 
 type TodoListNameProps = {
   listName: string | "";
@@ -18,6 +20,7 @@ const TodoListName: FC<TodoListNameProps> = ({
   const handleName = (event: React.FormEvent) => {
     event.preventDefault();
     if (inputName.length > 3) {
+      inputName.trim().toUpperCase();
       setListName(inputName);
     } else {
       setListName(date);
@@ -46,8 +49,16 @@ const TodoListName: FC<TodoListNameProps> = ({
           <button type="submit">Add Name </button>
         </form>
       )}
-      <h2>{listName}</h2>
-      <Button handleClick={editName}>Edit</Button>
+      <div className={styles.subtitle}>
+        <h2 className={styles.h2}>{listName}</h2>
+        <Button
+          variant="secondary"
+          className={styles.editSubtitle}
+          handleClick={editName}
+        >
+          <EditIcon />
+        </Button>
+      </div>
     </>
   );
 };

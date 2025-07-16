@@ -1,0 +1,44 @@
+.list {
+  width: 90vw;
+}
+
+.checkbox {
+  border: 2px solid var(--font-color-dark);
+  margin-right: 1rem;
+  margin-top: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background-color: var(--font-color-light);
+}
+
+.listItem {
+  border-bottom: 1px solid var(--font-color-light);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-block: 0.5rem;
+  padding: 0.5rem 1.5rem;
+}
+.editButton {
+  margin-left: auto;
+  margin-block: 5px;
+}
+.prio {
+  background-color: var(--accent-color);
+  color: var(--font-color-light);
+  border-radius: 5px;
+  border: none;
+}
+.done {
+  text-decoration: line-through;
+  color: var(--font-color-done);
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1.5rem;
+  margin-bottom: 3rem;
+}
