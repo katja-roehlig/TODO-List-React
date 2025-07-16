@@ -26,6 +26,7 @@ const Input: FC<InputProps> = ({ setTodoList, editTodo, setEditTodo }) => {
 
   useEffect(() => {
     if (editTodo) {
+      setShowInput(true);
       setTodo(editTodo.name);
       setPrio(editTodo.prio);
     }
