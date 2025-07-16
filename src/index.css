@@ -19,30 +19,20 @@ html {
   --secondary-color-dark: #dcecee;
   --primary-color: #22277b;
   --primary-color-transparent: #22267b1b;
-  /* color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
 }
 
 body {
   font-family: "SourceSansProReg";
   font-size: 1.6rem;
+  color: var(--font-color-dark);
   background-image: linear-gradient(
-    var(--bg-color-dark),
+    var(--bg-color-dark) 60%,
     var(--bg-color-light)
   );
-  margin: 0;
-  /*  display: flex;
-  justify-content: center;
-  align-items: center; */
+  margin: 0 auto;
   min-width: 320px;
+  max-width: 768px;
   min-height: 100vh;
-  border: 2px solid gold;
 }
 
 /* fonts ******************************************************************************/
@@ -78,9 +68,19 @@ h2 {
 
 input {
   appearance: none;
-  padding: 0.5rem;
-  border-radius: 5px;
+  height: 46px;
+  padding: 0.5rem 1.5rem;
+  border-radius: 15px;
   border: 2px solid transparent;
+  min-width: 70%;
+  width: 80%;
+  filter: drop-shadow(0px 2px 2px #22277bb3);
+}
+
+.inputLabel {
+  display: flex;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 input:focus {
@@ -89,19 +89,10 @@ input:focus {
 li {
   list-style: none;
 }
-
-.basicWrapper {
-  padding-inline: 2rem;
+.hiddenElement {
+  opacity: 0;
+  position: absolute;
 }
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
+.basicWrapper {
+  padding-inline: 1rem;
+}

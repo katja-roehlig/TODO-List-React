@@ -3,7 +3,7 @@ import Button from "./Button";
 import EditIcon from "../components-svg/EditIcon";
 import ResetIcon from "../components-svg/ResetIcon";
 import DeleteIcon from "../components-svg/DeleteIcon";
-import styles from "./List.module.css";
+import styles from "../styles/List.module.css";
 import CheckIcon from "../components-svg/CheckIcon";
 
 type TodoItem = { id: string; name: string; prio: boolean; isDone: boolean };
@@ -14,12 +14,7 @@ type ListProps = {
   setEditTodo: (todo: TodoItem | null) => void;
 };
 
-const List: FC<ListProps> = ({
-  todoList,
-  setTodoList,
-  setEditTodo,
-  editTodo,
-}) => {
+const List: FC<ListProps> = ({ todoList, setTodoList, setEditTodo }) => {
   const handleDoneChange = (id: string) => {
     setTodoList((prev) =>
       prev
@@ -53,13 +48,6 @@ const List: FC<ListProps> = ({
         {todoList.map((item) => (
           <li
             key={item.id}
-            /* style={
-              item.prio
-                ? { color: "red" }
-                : item.isDone
-                ? { color: "lightgrey", textDecoration: "line-through" }
-                : { color: "initial" }
-            } */
             className={` ${styles.listItem} ${
               item.prio ? styles.prio : item.isDone ? styles.done : ""
             }  `}
@@ -69,10 +57,10 @@ const List: FC<ListProps> = ({
               id={item.id}
               checked={item.isDone}
               onChange={() => handleDoneChange(item.id)}
-              className={styles.hiddenCheckbox}
+              className="hiddenElement"
             />
 
-            <label htmlFor="item.id" className="checkbox">
+            <label htmlFor="item.id">
               {item.isDone ? (
                 <CheckIcon
                   className={styles.iconChecked}

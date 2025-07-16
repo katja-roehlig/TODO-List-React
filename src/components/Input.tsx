@@ -2,6 +2,9 @@ import { /* useEffect */ useEffect, useRef, useState } from "react";
 import type { FC } from "react";
 import Button from "./Button";
 import PrioIcon from "../components-svg/PrioIcon";
+import styles from "../styles/Input.module.css";
+import AddIcon from "../components-svg/AddIcon";
+import HookIcon from "../components-svg/HookIcon";
 
 //Type declaration
 type TodoItem = { id: string; name: string; prio: boolean; isDone: boolean };
@@ -9,15 +12,9 @@ type InputProps = {
   setTodoList: React.Dispatch<React.SetStateAction<TodoItem[]>>;
   editTodo: TodoItem | null;
   setEditTodo: (todo: TodoItem | null) => void;
-  /*  todoList: TodoItem[];
-  listName: string; */
 };
 
-const Input: FC<InputProps> = ({
-  setTodoList,
-  editTodo,
-  setEditTodo /*  todoList, listName */,
-}) => {
+const Input: FC<InputProps> = ({ setTodoList, editTodo, setEditTodo }) => {
   //Variables
   const uuid = crypto.randomUUID();
 
@@ -25,6 +22,7 @@ const Input: FC<InputProps> = ({
   //States
   const [todo, setTodo] = useState("");
   const [prio, setPrio] = useState(false);
+  const [showInput, setShowInput] = useState(false);
 
   useEffect(() => {
     if (editTodo) {
@@ -57,6 +55,16 @@ const Input: FC<InputProps> = ({
     cursorRef.current?.focus();
   };
 
+  const handleClose = () => {
+    if (editTodo) {
+      setEditTodo(null);
+      setTodo("");
+      setPrio(false);
+      cursorRef.current?.focus();
+    }
+    setShowInput(false);
+  };
+
   //Functions
   const handleTodo = (event: React.FormEvent) => {
     event.preventDefault();
@@ -87,41 +95,72 @@ const Input: FC<InputProps> = ({
 
   return (
     <>
-      <form onSubmit={handleTodo}>
-        <label htmlFor="todos">Add Todo </label>
-        <input
-          name="todos"
-          id="todos"
-          ref={cursorRef}
-          autoFocus
-          required
-          placeholder="wash your clothes"
-          value={todo}
-          onChange={(event) => setTodo(event.target.value)}
-        ></input>
-        <label>
-          <input
-            type="checkbox"
-            checked={prio}
-            onChange={() => setPrio(!prio)}
-            style={{ border: "2px solid indigo" }}
-          />
-          <PrioIcon />
-        </label>
-        <Button variant="primary">{editTodo ? "Change" : "+"}</Button>
-      </form>
-      {editTodo && (
-        <Button
-          handleClick={() => {
-            setEditTodo(null);
-            setTodo("");
-            setPrio(false);
-            cursorRef.current?.focus();
-          }}
-        >
-          Back
-        </Button>
+      {!showInput && (
+        <div className={styles.buttonWrapper}>
+          <Button
+            className={styles.callInput}
+            handleClick={() => setShowInput(true)}
+            type="button"
+          >
+            <AddIcon />
+          </Button>
+        </div>
       )}
+      <div
+        className={`${styles.inputWrapper} ${
+          showInput ? styles.visible : styles.hidden
+        }`}
+      >
+        <Button
+          variant="secondary"
+          className={styles.closeButton}
+          type="button"
+          handleClick={handleClose}
+        >
+          <AddIcon size={15} className={styles.closeIcon} />
+        </Button>
+        <div className="basicWrapper">
+          <form onSubmit={handleTodo}>
+            <label htmlFor="todos" className="inputLabel">
+              Add Todo
+            </label>
+            <div className={styles.describeTodo}>
+              <input
+                name="todos"
+                id="todos"
+                ref={cursorRef}
+                autoFocus
+                required
+                placeholder="wash your clothes"
+                value={todo}
+                onChange={(event) => setTodo(event.target.value)}
+              />
+
+              <label>
+                <input
+                  type="checkbox"
+                  className="hiddenElement"
+                  checked={prio}
+                  onChange={() => setPrio(!prio)}
+                />
+                <div className={styles.checkPrio}>
+                  <PrioIcon
+                    color={
+                      prio ? "var(--accent-color)" : "var(--font-color-done)"
+                    }
+                    size={30}
+                  />
+                </div>
+              </label>
+            </div>
+            <div className={styles.buttonWrapper}>
+              <Button variant="primary">
+                {editTodo ? <HookIcon size={18} /> : <AddIcon size={18} />}
+              </Button>
+            </div>
+          </form>
+        </div>
+      </div>
     </>
   );
 };

@@ -1,0 +1,19 @@
+.form {
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+}
+
+.describeSubtitle {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.subtitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 1.5rem;
+}
+.h2 {
+  text-align: center;
+}
