@@ -16,17 +16,26 @@
 
 .primary {
   background-color: var(--primary-color);
-}
-.secondary {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary-color-transparent);
+  border-radius: 50%;
+  width: 4.6rem;
+  height: 4.6rem;
+  padding: 0.5rem;
+  margin-right: 1rem;
+}
+.secondary {
+  background-color: transparent;
+  color: white;
+}
+.tertiary {
+  background-color: var(--accent-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   width: 5rem;
   height: 5rem;
   padding: 0.5rem;
-}
-.tertiary {
-  background-color: var(--accent-color);
 }

@@ -3,11 +3,11 @@
   justify-content: center;
   align-items: center;
   padding-inline: 1.5rem;
-  border: 2px solid coral;
 }
 
 .editSubtitle {
   margin-left: auto;
+  filter: drop-shadow(0px 4px 2px #22277bb3);
 }
 
 .h2 {

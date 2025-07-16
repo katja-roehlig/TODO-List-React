@@ -33,7 +33,7 @@ const TodoListName: FC<TodoListNameProps> = ({
     setListName("");
   };
   return (
-    <>
+    <div className="basicWrapper">
       {showInput && (
         <form onSubmit={handleName}>
           <label htmlFor="todos">Name your TodoList </label>
@@ -59,7 +59,7 @@ const TodoListName: FC<TodoListNameProps> = ({
           <EditIcon />
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 export default TodoListName;

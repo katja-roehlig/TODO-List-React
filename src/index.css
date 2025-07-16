@@ -13,7 +13,7 @@ html {
   --font-color-light: #ffffff;
   --font-color-dark: #22277b;
   --font-color-done: #9395aa;
-  --accent-color: #fb2529;
+  --accent-color: #e90b0f;
   --accent-color-light: #fb9394;
   --secondary-color-light: #ffffff;
   --secondary-color-dark: #dcecee;
@@ -90,6 +90,9 @@ li {
   list-style: none;
 }
 
+.basicWrapper {
+  padding-inline: 2rem;
+}
 /* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

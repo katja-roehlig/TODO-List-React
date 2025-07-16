@@ -4,6 +4,7 @@ import EditIcon from "../components-svg/EditIcon";
 import ResetIcon from "../components-svg/ResetIcon";
 import DeleteIcon from "../components-svg/DeleteIcon";
 import styles from "./List.module.css";
+import CheckIcon from "../components-svg/CheckIcon";
 
 type TodoItem = { id: string; name: string; prio: boolean; isDone: boolean };
 type ListProps = {
@@ -47,7 +48,7 @@ const List: FC<ListProps> = ({
     );
   };
   return (
-    <>
+    <div className="basicWrapper">
       <ul className={styles.list}>
         {todoList.map((item) => (
           <li
@@ -63,13 +64,24 @@ const List: FC<ListProps> = ({
               item.prio ? styles.prio : item.isDone ? styles.done : ""
             }  `}
           >
-            <label>
-              <input
-                type="checkbox"
-                checked={item.isDone}
-                onChange={() => handleDoneChange(item.id)}
-                className={styles.checkbox}
-              />
+            <input
+              type="checkbox"
+              id={item.id}
+              checked={item.isDone}
+              onChange={() => handleDoneChange(item.id)}
+              className={styles.hiddenCheckbox}
+            />
+
+            <label htmlFor="item.id" className="checkbox">
+              {item.isDone ? (
+                <CheckIcon
+                  className={styles.iconChecked}
+                  color="var(--primary-color)"
+                  size={21}
+                />
+              ) : (
+                <div className={styles.iconUnchecked}></div>
+              )}
             </label>
             {item.name}
             <Button
@@ -86,13 +98,13 @@ const List: FC<ListProps> = ({
       </ul>
       <div className={styles.buttonContainer}>
         <Button handleClick={handleReset}>
-          <ResetIcon />
+          <ResetIcon size={22} />
         </Button>
         <Button variant="tertiary" handleClick={handleDelete}>
-          <DeleteIcon />
+          <DeleteIcon size={22} />
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 
