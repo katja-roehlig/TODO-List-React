@@ -43,13 +43,14 @@ function App() {
       </h1>
 
       <TodoListName listName={listName} setListName={setListName} date={date} />
-      <Input
+
+      <List
+        todoList={todoList}
         setTodoList={setTodoList}
         editTodo={editTodo}
         setEditTodo={setEditTodo}
       />
-      <List
-        todoList={todoList}
+      <Input
         setTodoList={setTodoList}
         editTodo={editTodo}
         setEditTodo={setEditTodo}
