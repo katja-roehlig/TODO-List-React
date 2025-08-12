@@ -22,11 +22,9 @@ const Input: FC<InputProps> = ({ setTodoList, editTodo, setEditTodo }) => {
   //States
   const [todo, setTodo] = useState("");
   const [prio, setPrio] = useState(false);
-  const [showInput, setShowInput] = useState(false);
 
   useEffect(() => {
     if (editTodo) {
-      setShowInput(true);
       setTodo(editTodo.name);
       setPrio(editTodo.prio);
     }
