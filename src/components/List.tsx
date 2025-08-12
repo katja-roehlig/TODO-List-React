@@ -44,7 +44,7 @@ const List: FC<ListProps> = ({ todoList, setTodoList, setEditTodo }) => {
   };
   return (
     <div className="basicWrapper">
-      <ul className={styles.list}>
+      <ul>
         {todoList.map((item) => (
           <li
             key={item.id}
@@ -84,14 +84,16 @@ const List: FC<ListProps> = ({ todoList, setTodoList, setEditTodo }) => {
           </li>
         ))}
       </ul>
-      <div className={styles.buttonContainer}>
-        <Button handleClick={handleReset}>
-          <ResetIcon size={22} />
-        </Button>
-        <Button variant="tertiary" handleClick={handleDelete}>
-          <DeleteIcon size={22} />
-        </Button>
-      </div>
+      {todoList.length !== 0 && (
+        <div className={styles.buttonContainer}>
+          <Button handleClick={handleReset}>
+            <ResetIcon size={22} />
+          </Button>
+          <Button variant="tertiary" handleClick={handleDelete}>
+            <DeleteIcon size={22} />
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

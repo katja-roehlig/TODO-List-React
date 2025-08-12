@@ -10,9 +10,7 @@
   background-color: white;
   margin-right: 1rem;
 }
-.list {
-  padding-inline: 1rem;
-}
+
 .listItem {
   border-bottom: 1px solid var(--font-color-light);
   display: flex;
@@ -45,7 +43,6 @@
   align-items: center;
   gap: 1rem;
   justify-content: flex-start;
-  padding-right: 1.5rem;
   margin-bottom: 3rem;
   margin-top: 3rem;
 }

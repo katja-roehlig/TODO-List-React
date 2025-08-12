@@ -1,4 +1,4 @@
-import { /* useEffect */ useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { FC } from "react";
 import Button from "./Button";
 import PrioIcon from "../components-svg/PrioIcon";
@@ -56,16 +56,6 @@ const Input: FC<InputProps> = ({ setTodoList, editTodo, setEditTodo }) => {
     cursorRef.current?.focus();
   };
 
-  const handleClose = () => {
-    if (editTodo) {
-      setEditTodo(null);
-      setTodo("");
-      setPrio(false);
-      cursorRef.current?.focus();
-    }
-    setShowInput(false);
-  };
-
   //Functions
   const handleTodo = (event: React.FormEvent) => {
     event.preventDefault();
@@ -96,36 +86,13 @@ const Input: FC<InputProps> = ({ setTodoList, editTodo, setEditTodo }) => {
 
   return (
     <>
-      {!showInput && (
-        <div className={styles.buttonWrapper}>
-          <Button
-            className={styles.callInput}
-            handleClick={() => setShowInput(true)}
-            type="button"
-          >
-            <AddIcon />
-          </Button>
-        </div>
-      )}
-      <div
-        className={`${styles.inputWrapper} ${
-          showInput ? styles.visible : styles.hidden
-        }`}
-      >
-        <Button
-          variant="secondary"
-          className={styles.closeButton}
-          type="button"
-          handleClick={handleClose}
-        >
-          <AddIcon size={15} className={styles.closeIcon} />
-        </Button>
-        <div className="basicWrapper">
-          <form onSubmit={handleTodo}>
-            <label htmlFor="todos" className="inputLabel">
-              Add Todo
-            </label>
-            <div className={styles.describeTodo}>
+      <div className={`basicWrapper ${styles.inputWrapper}`}>
+        <form onSubmit={handleTodo} className={styles.formContainer}>
+          <label htmlFor="todos" className="inputLabel">
+            Add Todo
+          </label>
+          <div className={styles.describeTodo}>
+            <div className={styles.inputSection}>
               <input
                 name="todos"
                 id="todos"
@@ -134,10 +101,10 @@ const Input: FC<InputProps> = ({ setTodoList, editTodo, setEditTodo }) => {
                 required
                 placeholder="wash your clothes"
                 value={todo}
+                className={styles.inputField}
                 onChange={(event) => setTodo(event.target.value)}
               />
-
-              <label>
+              <label className={styles.prioLabel}>
                 <input
                   type="checkbox"
                   className="hiddenElement"
@@ -159,8 +126,8 @@ const Input: FC<InputProps> = ({ setTodoList, editTodo, setEditTodo }) => {
                 {editTodo ? <HookIcon size={18} /> : <AddIcon size={18} />}
               </Button>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </>
   );
