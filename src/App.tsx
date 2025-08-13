@@ -38,9 +38,11 @@ function App() {
 
   return (
     <>
-      <h1>
-        Get your sh<span className="star">*</span>t done
-      </h1>
+      <header>
+        <h1>
+          Get your sh<span className="star">*</span>t done
+        </h1>
+      </header>
 
       <TodoListName listName={listName} setListName={setListName} date={date} />
 

@@ -9,7 +9,7 @@
 
 h1 {
   padding-block: 1.5rem 1rem;
-  background-color: var(--primary-color);
+  background-color: var(--primary-color-transparent);
   text-align: center;
   width: 100%;
   border-bottom: 2px solid /* var(--accent-color) */ #fff;

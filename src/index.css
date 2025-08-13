@@ -54,7 +54,9 @@ body {
 
 h1 {
   font-family: "RibeyeMarrow";
-  color: /* var(--heading-color); */ #ffffff;
+  color: /* var(--heading-color); */ /* var(--secondary-color-dark); */ var(
+    --bg-color-light
+  );
   font-size: 3.2rem;
   line-height: 2.1;
   margin-top: 0;
