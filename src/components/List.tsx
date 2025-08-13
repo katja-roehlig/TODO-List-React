@@ -65,7 +65,7 @@ const List: FC<ListProps> = ({ todoList, setTodoList, setEditTodo }) => {
                 <CheckIcon
                   className={styles.iconChecked}
                   color="var(--primary-color)"
-                  size={21}
+                  size={24}
                 />
               ) : (
                 <div className={styles.iconUnchecked}></div>

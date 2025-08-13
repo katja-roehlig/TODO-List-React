@@ -1,14 +1,14 @@
 .iconChecked {
-  margin-right: 1rem;
+  margin-right: 1.2rem;
   position: relative;
   left: 0px;
 }
 .iconUnchecked {
-  width: 21px;
-  height: 21px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background-color: white;
-  margin-right: 1rem;
+  margin-right: 1.2rem;
 }
 
 .listItem {
@@ -17,7 +17,7 @@
   justify-content: flex-start;
   align-items: center;
   margin-block: 0.5rem;
-  height: 50px;
+  height: 52px;
   padding-inline: 1.5rem 0.5rem;
 }
 .editButton {

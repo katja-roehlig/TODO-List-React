@@ -51,7 +51,7 @@ const Input: FC<InputProps> = ({ setTodoList, editTodo, setEditTodo }) => {
     setEditTodo(null);
     setTodo("");
     setPrio(false);
-    cursorRef.current?.focus();
+    /*   cursorRef.current?.focus(); */
   };
 
   //Functions
@@ -74,7 +74,9 @@ const Input: FC<InputProps> = ({ setTodoList, editTodo, setEditTodo }) => {
         sortedList.sort((a, b) => {
           return Number(b.prio) - Number(a.prio); // true correspond to 1, false correspond to 0 - you have to convert them into Numbers
         });
-        return sortedList;
+        return sortedList.toSorted(
+          (a, b) => Number(a.isDone) - Number(b.isDone)
+        );
       });
       setTodo("");
       setPrio(false);
