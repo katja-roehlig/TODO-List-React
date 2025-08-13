@@ -10,8 +10,8 @@
 
 .primary {
   background-color: var(--bg-color-dark);
-  border: 2px solid var(--secondary-color-light);
-  color: var(--secondary-color-light);
+  border: 2px solid var(--primary-color);
+  color: var(--primary-colort);
   display: flex;
   justify-content: center;
   align-items: center;
