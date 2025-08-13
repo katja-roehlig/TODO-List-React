@@ -8,8 +8,11 @@
 }
 
 h1 {
-  padding-block: 1.5rem 1rem;
-  background-color: var(--primary-color-transparent);
+  padding-block: 1rem 1.5rem;
+  background: linear-gradient(
+    var(--primary-color-transparant-dark),
+    var(--primary-color-transparant-light)
+  );
   text-align: center;
   width: 100%;
   border-bottom: 2px solid /* var(--accent-color) */ #fff;

@@ -7,7 +7,7 @@
   cursor: pointer;
   color: var(--font-color-light);
   background-color: var(--bg-color-light);
-  filter: drop-shadow(0px 2px 2px #22277bb3);
+  filter: drop-shadow(0px 2px 2px var(--primary-color-transparant-dark));
 }
 
 .primary {
