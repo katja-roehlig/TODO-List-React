@@ -10,8 +10,8 @@
 h1 {
   padding-block: 1rem 1.5rem;
   background: linear-gradient(
-    var(--primary-color-transparant-dark),
-    var(--primary-color-transparant-light)
+    var(--primary-color-transparent-dark),
+    var(--primary-color-transparent-light)
   );
   text-align: center;
   width: 100%;
