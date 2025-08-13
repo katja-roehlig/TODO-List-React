@@ -6,14 +6,19 @@
   background-color: transparent;
   cursor: pointer;
   color: var(--font-color-light);
-  background-color: var(--bg-color-light);
-  filter: drop-shadow(0px 2px 2px var(--primary-color-transparant-dark));
+  /*  background-color: var(--bg-color-light); */
+  background: radial-gradient(
+    var(--primary-color-transparant-light),
+    var(--primary-color-transparant-dark)
+  );
+  /* filter: drop-shadow(0px 2px 2px var(--primary-color-transparant-dark)); */
+  box-shadow: 0px 2px 2px var(--primary-color-transparant-dark);
 }
 
 .primary {
   /* background-color: var(--primary-color); */
   /*  border: 2px solid var(--primary-color); */
-  color: var(--primary-color);
+  color: var(--bg-color-light);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +29,9 @@
 }
 .secondary {
   background-color: transparent;
+  background: transparent;
   color: white;
+  box-shadow: none;
 }
 .tertiary {
   /*  border: 2px solid var(--accent-color); */
